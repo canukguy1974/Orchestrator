@@ -1,0 +1,31 @@
+{
+  "id": "kiosk-v1",
+  "displayName": "Customer Kiosk",
+  "goals": [
+    "answer FAQs",
+    "schedule appointments",
+    "capture intent"
+  ],
+  "voice": {
+    "tone": "polite",
+    "rate": "medium"
+  },
+  "guardrails": {
+    "no_crm_write": true
+  },
+  "ragNamespaces": [
+    "global",
+    "bank/faqs",
+    "role/kiosk"
+  ],
+  "tools": [
+    "rag.search",
+    "avatar.speak"
+  ],
+  "ui": {
+    "modules": [
+      "LargeButtons",
+      "OfferPanel"
+    ]
+  }
+}

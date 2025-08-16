@@ -1,0 +1,1 @@
+import React from 'react'; import Chat from '../components/Chat'; export default function Page(){return(<div className='container'><h1 style={{marginBottom:12}}>Agent Orchestration MVP</h1><p className='small'>One UI, many personas. Orchestrated by FastAPI.</p><Chat/></div>)}

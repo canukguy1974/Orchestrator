@@ -1,0 +1,32 @@
+{
+  "id": "exec-v1",
+  "displayName": "Executive",
+  "goals": [
+    "find insights",
+    "reduce costs",
+    "increase NPS"
+  ],
+  "voice": {
+    "tone": "concise",
+    "rate": "fast"
+  },
+  "guardrails": {
+    "no_pii_outbound": true
+  },
+  "ragNamespaces": [
+    "global",
+    "bank/strategy",
+    "role/exec"
+  ],
+  "tools": [
+    "rag.search",
+    "crm.lookup",
+    "payments.offerPreview"
+  ],
+  "ui": {
+    "modules": [
+      "KPIDashboard",
+      "OfferPanel"
+    ]
+  }
+}

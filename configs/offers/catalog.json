@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": "acct-newcomer-bundle",
+      "name": "Newcomer Bundle",
+      "copy": "No-fee chequing for 12 months + $100 when you set up payroll.",
+      "cta": {
+        "label": "Open Account",
+        "action": "openAccount",
+        "payload": {}
+      },
+      "rules": {
+        "requireSegments": [
+          "newcomer"
+        ]
+      }
+    },
+    {
+      "id": "cashback-card-lite",
+      "name": "Cashback Card",
+      "copy": "3% on groceries and gas, 1% everywhere else.",
+      "cta": {
+        "label": "Apply Now",
+        "action": "applyCard",
+        "payload": {}
+      },
+      "rules": {
+        "minBalance": 100
+      }
+    }
+  ]
+}

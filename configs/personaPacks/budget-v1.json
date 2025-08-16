@@ -1,0 +1,32 @@
+{
+  "id": "budget-v1",
+  "displayName": "Budget Companion",
+  "goals": [
+    "improve savings",
+    "reduce fees",
+    "meet goals"
+  ],
+  "voice": {
+    "tone": "supportive",
+    "rate": "medium"
+  },
+  "guardrails": {
+    "no_internal_docs": true
+  },
+  "ragNamespaces": [
+    "global",
+    "role/budget"
+  ],
+  "tools": [
+    "rag.search",
+    "budget.analyze",
+    "avatar.speak"
+  ],
+  "ui": {
+    "modules": [
+      "Cashflow",
+      "Recommendations",
+      "OfferPanel"
+    ]
+  }
+}
