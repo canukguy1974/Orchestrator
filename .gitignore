@@ -1,11 +1,16 @@
 # Environment Variables and Secrets
 .env
-.env.*
 .env.local
 .env.production
 .env.staging
-apps/server/.env*
-apps/web/.env*
+apps/server/.env
+apps/server/.env.*
+apps/web/.env
+apps/web/.env.*
+
+# Allow environment templates
+!.env.template
+!.env.example
 
 # API Keys and Sensitive Config
 **/config/secrets.json
