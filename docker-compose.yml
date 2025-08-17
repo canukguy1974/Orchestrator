@@ -10,6 +10,23 @@ services:
     image: mongo:6
     ports: ["27017:27017"]
     volumes: [ "mongo_data:/data/db" ]
+  app:
+    build:
+      context: ./apps/server
+      dockerfile: Dockerfile
+    env_file:
+      - ./apps/server/.env
+    volumes:
+      - ./apps/server:/app
+      - ./seed_docs:/seed_docs
+      - ./configs:/configs
+    ports:
+      - "8000:8000"
+    depends_on:
+      - qdrant
+      - redis
+      - mongo
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 volumes:
   qdrant_storage: {}
   mongo_data: {}
