@@ -308,7 +308,7 @@ See README for RAG setup and Quick start.
 ## 👨‍💻 About the Developer
 
 <p align="center">
-  <img src="DCW_LOG.png" alt="Digital Creations Windsor" width="200"/>
+  <img src="DCW_LOGO.png" alt="Digital Creations Windsor" width="200"/>
 </p>
 
 <p align="center">
