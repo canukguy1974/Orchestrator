@@ -51,6 +51,9 @@ downloads/
 eggs/
 .eggs/
 lib/
+!lib/
+lib/*
+!lib/tools.d.ts
 lib64/
 parts/
 sdist/

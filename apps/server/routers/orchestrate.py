@@ -18,7 +18,7 @@ def orchestrate(req: OrchestrateReq):
     except Exception as e:
         raise HTTPException(status_code=400, detail=f'Unknown persona: {req.persona} ({e})')
     
-    allowed = set(persona.get('tools', []))
+    allowed = set(persona.tools)
     text = last_user_text([m.model_dump() for m in req.messages])
     tool_events: List[ToolEvent] = []
     context_data = {}
@@ -26,7 +26,7 @@ def orchestrate(req: OrchestrateReq):
     # RAG Search
     rag_chunks = []
     if 'rag.search' in allowed:
-        out = rag.search(query=text, namespaces=persona.get('ragNamespaces', []), user_id=req.user_id, k=3)
+        out = rag.search(query=text, namespaces=persona.ragNamespaces, user_id=req.user_id, k=3)
         tool_events.append(ToolEvent(name='rag.search', input={'query': text}, output={'count': len(out)}))
         rag_chunks = out
         context_data['rag_results'] = out
@@ -55,14 +55,14 @@ def orchestrate(req: OrchestrateReq):
         context_data['kyc_status'] = out
     
     # Generate persona-appropriate response
-    display_name = persona.get('displayName', 'Assistant')
+    display_name = persona.displayName
     reply_parts = [f"[{display_name}]"]
     
     if rag_chunks:
         reply_parts.append(f"I found {len(rag_chunks)} relevant documents.")
-        if persona.get('id') == 'teller-v1':
+        if persona.id == 'teller-v1':
             reply_parts.append("I can help you with account services and transactions.")
-        elif persona.get('id') == 'exec-v1':
+        elif persona.id == 'exec-v1':
             reply_parts.append("Here are the key insights from our knowledge base.")
     
     if budget_insights:
@@ -81,7 +81,7 @@ def orchestrate(req: OrchestrateReq):
     # Avatar/TTS
     media = None
     if 'avatar.speak' in allowed:
-        voice_config = persona.get('voice', {})
+        voice_config = persona.voice
         media = avatar.speak(text=reply_text, persona_voice=voice_config.get('tone', 'neutral'))
     
     # Offer Engine
