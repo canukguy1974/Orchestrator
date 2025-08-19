@@ -26,11 +26,12 @@ export default function Chat() {
     const next = [...messages, { role: 'user', content: input }];
     setMessages(next);
     try {
-      const res = await fetch('/api/orchestrate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ persona, user_id: userId, messages: next }),
-      });
+     const apiBase = (process.env.NEXT_PUBLIC_API_BASE ?? '') || window.location.origin;
+const res = await fetch(`${apiBase}/api/orchestrate`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ persona, user_id: userId, messages: next }),
+});
       if (!res.ok) throw new Error('Bad response');
       const data: OrchestrateRes = await res.json();
       setMessages((m) => [...m, { role: 'assistant', content: data.reply.text }]);
