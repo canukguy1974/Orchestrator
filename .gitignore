@@ -12,6 +12,25 @@ apps/web/.env.*
 !.env.template
 !.env.example
 
+# More secret / key patterns (private keys, certs, credentials)
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.asc
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+.ssh/
+.aws/
+.azure/
+credentials
+*.env.*.local
+.npmrc
+**/.npmrc
+
 # API Keys and Sensitive Config
 **/config/secrets.json
 **/*key*
@@ -44,22 +63,30 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-# Virtual environments
+# Virtual environments (root and nested)
 .venv/
 venv/
 ENV/
 env/
 .env/
+**/.venv/
+**/venv/
+**/.virtualenv/
+**/ENV/
+**/env/
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
 # Node.js
-node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+
+# Ignore node_modules anywhere
+**/node_modules/
+jspm_packages/
 
 # Next.js
 apps/web/.next/
@@ -96,10 +123,6 @@ coverage/
 
 # nyc test coverage
 .nyc_output
-
-# Dependency directories
-node_modules/
-jspm_packages/
 
 # Optional npm cache directory
 .npm
