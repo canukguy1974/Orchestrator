@@ -5,12 +5,14 @@ A production-ready AI agent orchestration platform that combines **multi-persona
 ## ✨ Features Implemented
 
 ### 🎭 Multi-Persona System
+
 - **Teller**: Handles routine banking, account services, KYC verification
 - **Executive**: Business insights, strategy, analytics  
 - **Budget Companion**: Personal finance analysis, savings recommendations
 - **Kiosk**: Self-service support (planned)
 
 ### 🧠 Core Capabilities
+
 - **RAG-Powered Search**: OpenAI embeddings + Qdrant vector storage
 - **CRM Integration**: Customer lookup and personalization
 - **Budget Analysis**: Spending insights and recommendations
@@ -21,6 +23,7 @@ A production-ready AI agent orchestration platform that combines **multi-persona
 - **Avatar/TTS**: Voice response generation (ready for SadTalker integration)
 
 ### 🛠️ Technical Stack
+
 - **Backend**: FastAPI + Python 3.12
 - **Frontend**: Next.js (port 3000)
 - **Vector DB**: Qdrant (semantic search)
@@ -32,17 +35,21 @@ A production-ready AI agent orchestration platform that combines **multi-persona
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Docker & Docker Compose
 - WSL/Linux environment (for scripts)
 - OpenAI API key (optional, falls back to hash embeddings)
 
 ### 1. Clone & Setup
+
 ```bash
 cd ~/projects/Orchestrator
 ```
 
 ### 2. Configure Environment
+
 Edit `apps/server/.env`:
+
 ```env
 # Database connections (use container hostnames for Docker deployment)
 MONGO_URI=mongodb://mongo:27017/agent_mvp
@@ -64,6 +71,7 @@ COLLECTION_NAME=docs
 ```
 
 ### 3. Start Services
+
 ```bash
 # Start all services (databases + app)
 docker compose up -d --build
@@ -73,6 +81,7 @@ curl http://localhost:8000/diagnostics
 ```
 
 ### 4. Seed Knowledge Base
+
 ```bash
 # Create virtual environment for seeding
 python3 -m venv .venv
@@ -87,6 +96,7 @@ REDIS_URL=redis://localhost:6379/0
 ```
 
 ### 5. Test the System
+
 ```bash
 # Run comprehensive test suite
 python test_system.py
@@ -95,13 +105,16 @@ python test_system.py
 ## 🔗 API Endpoints
 
 ### Health & Diagnostics
+
 - `GET /health` - Basic health check
 - `GET /diagnostics` - Detailed service status (Qdrant, Redis, Mongo, embeddings)
 
 ### Orchestration  
+
 - `POST /orchestrate` - Main conversation endpoint
 
 Example request:
+
 ```json
 {
   "persona": "teller-v1",
@@ -113,6 +126,7 @@ Example request:
 ```
 
 Example response:
+
 ```json
 {
   "reply": {
@@ -139,6 +153,7 @@ Located in `configs/personaPacks/`:
 - **kiosk-v1.json**: Self-service kiosk interface
 
 Each persona defines:
+
 - `tools[]`: Allowed tool access (rag.search, crm.lookup, etc.)
 - `ragNamespaces[]`: Knowledge scope (bank/policies, bank/ops, etc.)
 - `voice{}`: TTS configuration
@@ -147,6 +162,7 @@ Each persona defines:
 ## 🛠️ Tool System
 
 ### Available Tools
+
 - **rag.search**: Semantic search across knowledge base
 - **crm.lookup**: Customer data retrieval  
 - **kyc.verify**: Identity verification
@@ -156,6 +172,7 @@ Each persona defines:
 - **avatar.speak**: Voice/video generation (ready for SadTalker)
 
 ### Adding New Tools
+
 1. Create `apps/server/server/tools/your_tool.py`
 2. Add functions with clear type hints
 3. Update `apps/server/server/tools/__init__.py`
@@ -173,6 +190,7 @@ Documents are stored in Qdrant with namespace-based access control:
 - `role/teller`, `role/exec`, etc.: Role-specific content
 
 Add new content:
+
 ```bash
 # Add documents to seed_docs/ folder, then:
 python apps/server/scripts/embed_upsert.py --ns your/namespace --src path/to/docs
@@ -181,6 +199,7 @@ python apps/server/scripts/embed_upsert.py --ns your/namespace --src path/to/doc
 ## 🔧 Development
 
 ### Local Development (Hybrid)
+
 ```bash
 # Run databases in Docker
 docker compose up -d qdrant redis mongo
@@ -197,12 +216,14 @@ uvicorn main:app --host 0.0.0.0 --port 8080 --reload
 ```
 
 ### Full Docker Development  
+
 ```bash
 # Everything in containers
 docker compose up -d --build
 ```
 
 ### Adding SadTalker Integration
+
 The avatar tool is ready for SadTalker integration:
 
 1. Update `server/tools/avatar.py` to call SadTalker API
@@ -213,12 +234,14 @@ The avatar tool is ready for SadTalker integration:
 ## 🚦 Production Readiness
 
 ### Security Features Implemented
+
 - Persona-based tool access control
 - Namespace-scoped knowledge access
 - API key management via environment variables
 - Tool execution logging and audit trail
 
 ### Next Steps for Production
+
 - [ ] Add authentication/authorization
 - [ ] Implement proper logging and monitoring  
 - [ ] Add rate limiting
@@ -240,6 +263,7 @@ Based on `docs/features.md`, planned enhancements:
 ## 🎭 Current Status
 
 ✅ **Complete MVP Features:**
+
 - Multi-persona orchestration
 - RAG with OpenAI embeddings  
 - CRM integration and customer lookup
@@ -250,6 +274,7 @@ Based on `docs/features.md`, planned enhancements:
 - Comprehensive test suite
 
 🔄 **Ready for Your Extensions:**
+
 - SadTalker video generation
 - Advanced budget bot features
 - Custom persona development
@@ -267,6 +292,7 @@ If you encounter issues:
 4. **Restart services**: `docker compose restart`
 
 **Common Issues:**
+
 - **Module not found**: Run `pip install -r apps/server/requirements.txt` in virtual environment
 - **Connection refused**: Check `docker ps` and port mappings
 - **Embedding errors**: Verify API keys in `.env` file
@@ -276,3 +302,32 @@ The system is production-ready for your banking AI agent! 🚀
 Generated 2025-08-16
 
 See README for RAG setup and Quick start.
+
+---
+
+## 👨‍💻 About the Developer
+
+<p align="center">
+  <img src="DCW_LOG.png" alt="Digital Creations Windsor" width="200"/>
+</p>
+
+<p align="center">
+  <b>Colin — Founder & Indie Dev @ <a href="https://digitalcreationswindsor.xyz">Digital Creations Windsor</a></b><br/>
+  📧 <a href="mailto:colin@digitalcreationswindsor.xyz">colin@digitalcreationswindsor.xyz</a>  
+</p>
+
+<p align="center">
+  <a href="https://github.com/canukguy1974">
+    <img src="https://img.shields.io/badge/GitHub-Profile-black?style=for-the-badge&logo=github" />
+  </a>
+  <a href="https://digitalcreationswindsor.xyz">
+    <img src="https://img.shields.io/badge/Website-digitalcreationswindsor.xyz-green?style=for-the-badge&logo=google-chrome" />
+  </a>
+  <a href="https://linkedin.com/company/digital-creations-windsor">
+    <img src="https://img.shields.io/badge/LinkedIn-Network-blue?style=for-the-badge&logo=linkedin" />
+  </a>
+</p>
+
+<p align="center"><i>
+  Building AI automation tools that scale businesses — one line of code at a time.
+</i></p>
