@@ -27,6 +27,252 @@
       "rules": {
         "minBalance": 100
       }
+    },
+    {
+      "id": "premium-rewards-card",
+      "name": "Premium Rewards Card",
+      "copy": "Earn 5% on travel, 3% dining, 2% groceries. $200 welcome bonus + airport lounge access.",
+      "cta": {
+        "label": "Apply Now",
+        "action": "applyCard",
+        "payload": {"cardType": "premium"}
+      },
+      "rules": {
+        "minIncome": 60000,
+        "minCreditScore": 700
+      }
+    },
+    {
+      "id": "student-package",
+      "name": "Student Banking Package", 
+      "copy": "Free banking while you study + $50 welcome bonus. No monthly fees for students.",
+      "cta": {
+        "label": "Open Account",
+        "action": "openAccount",
+        "payload": {"accountType": "student"}
+      },
+      "rules": {
+        "requireSegments": ["student"],
+        "maxAge": 25
+      }
+    },
+    {
+      "id": "mortgage-preapproval",
+      "name": "Mortgage Pre-Approval",
+      "copy": "Get pre-approved in 24 hours. Rates starting at 4.99%. $500 credit toward legal fees.",
+      "cta": {
+        "label": "Get Pre-Approved",
+        "action": "mortgageApplication",
+        "payload": {"type": "preapproval"}
+      },
+      "rules": {
+        "minIncome": 45000,
+        "requireSegments": ["homebuyer"]
+      }
+    },
+    {
+      "id": "business-account-startup",
+      "name": "Business Startup Account",
+      "copy": "12 months of free business banking + $300 bonus when you bring your business to us.",
+      "cta": {
+        "label": "Open Business Account",
+        "action": "openAccount",
+        "payload": {"accountType": "business"}
+      },
+      "rules": {
+        "requireSegments": ["business", "startup"]
+      }
+    },
+    {
+      "id": "investment-portfolio-advice",
+      "name": "Investment Portfolio Review",
+      "copy": "Free portfolio analysis with our investment advisors. Optimize your returns and reduce fees.",
+      "cta": {
+        "label": "Book Consultation",
+        "action": "bookAppointment",
+        "payload": {"serviceType": "investment"}
+      },
+      "rules": {
+        "minBalance": 10000,
+        "requireSegments": ["investor"]
+      }
+    },
+    {
+      "id": "line-of-credit-personal",
+      "name": "Personal Line of Credit",
+      "copy": "Access funds when you need them. Rates as low as 6.45%. Only pay interest on what you use.",
+      "cta": {
+        "label": "Apply Now",
+        "action": "applyCredit",
+        "payload": {"productType": "lineOfCredit"}
+      },
+      "rules": {
+        "minIncome": 30000,
+        "minCreditScore": 650
+      }
+    },
+    {
+      "id": "senior-banking-package",
+      "name": "Senior Banking Advantage",
+      "copy": "No monthly fees after age 60. Free safety deposit box + enhanced fraud protection.",
+      "cta": {
+        "label": "Learn More",
+        "action": "bookAppointment",
+        "payload": {"serviceType": "senior"}
+      },
+      "rules": {
+        "minAge": 60,
+        "requireSegments": ["senior"]
+      }
+    },
+    {
+      "id": "insurance-home-auto",
+      "name": "Home & Auto Insurance Bundle",
+      "copy": "Save up to 20% when you bundle. Get a quote in 5 minutes + $100 gift card.",
+      "cta": {
+        "label": "Get Quote",
+        "action": "insuranceQuote",
+        "payload": {"bundleType": "homeAuto"}
+      },
+      "rules": {
+        "requireSegments": ["homeowner"]
+      }
+    },
+    {
+      "id": "savings-high-interest",
+      "name": "High Interest Savings",
+      "copy": "Earn 4.25% on your savings. No minimum balance. CDIC insured up to $100,000.",
+      "cta": {
+        "label": "Open Account",
+        "action": "openAccount",
+        "payload": {"accountType": "savings"}
+      },
+      "rules": {
+        "minBalance": 0
+      }
+    },
+    {
+      "id": "travel-card-no-fee",
+      "name": "No-Fee Travel Card",
+      "copy": "Earn travel points with no annual fee. 2x points on travel, 1.5x on everything else.",
+      "cta": {
+        "label": "Apply Now",
+        "action": "applyCard",
+        "payload": {"cardType": "travel"}
+      },
+      "rules": {
+        "minIncome": 40000
+      }
+    },
+    {
+      "id": "small-business-loan",
+      "name": "Small Business Loan",
+      "copy": "Grow your business with competitive rates. Up to $500,000 available. Fast approval process.",
+      "cta": {
+        "label": "Apply for Loan",
+        "action": "applyLoan",
+        "payload": {"loanType": "business"}
+      },
+      "rules": {
+        "requireSegments": ["business"],
+        "minBusinessAge": 2
+      }
+    },
+    {
+      "id": "retirement-planning",
+      "name": "Retirement Planning Session",
+      "copy": "Free retirement planning consultation. Maximize your RRSP and TFSA contributions.",
+      "cta": {
+        "label": "Book Session",
+        "action": "bookAppointment",
+        "payload": {"serviceType": "retirement"}
+      },
+      "rules": {
+        "minAge": 45,
+        "requireSegments": ["retirement-planning"]
+      }
+    },
+    {
+      "id": "overdraft-protection",
+      "name": "Overdraft Protection",
+      "copy": "Never worry about NSF fees again. $5/month for peace of mind protection.",
+      "cta": {
+        "label": "Add Protection",
+        "action": "addService",
+        "payload": {"serviceType": "overdraft"}
+      },
+      "rules": {
+        "hasChequingAccount": true
+      }
+    },
+    {
+      "id": "wealth-management-premium",
+      "name": "Private Wealth Management",
+      "copy": "Exclusive wealth management for high-net-worth clients. Dedicated advisor and priority service.",
+      "cta": {
+        "label": "Schedule Meeting",
+        "action": "bookAppointment",
+        "payload": {"serviceType": "wealth"}
+      },
+      "rules": {
+        "minBalance": 250000,
+        "requireSegments": ["high-net-worth"]
+      }
+    },
+    {
+      "id": "auto-loan-promotion",
+      "name": "Auto Loan Special Rate",
+      "copy": "Finance your dream car with rates as low as 3.99%. Pre-approval in minutes.",
+      "cta": {
+        "label": "Apply for Auto Loan",
+        "action": "applyLoan",
+        "payload": {"loanType": "auto"}
+      },
+      "rules": {
+        "minIncome": 35000,
+        "requireSegments": ["auto-buyer"]
+      }
+    },
+    {
+      "id": "digital-banking-upgrade",
+      "name": "Digital Banking Plus",
+      "copy": "Upgrade to premium digital features. Advanced budgeting tools and investment tracking.",
+      "cta": {
+        "label": "Upgrade Now",
+        "action": "upgradeService",
+        "payload": {"serviceType": "digital"}
+      },
+      "rules": {
+        "hasOnlineBanking": true,
+        "minBalance": 5000
+      }
+    },
+    {
+      "id": "foreign-exchange-service",
+      "name": "Foreign Exchange Service",
+      "copy": "Best exchange rates guaranteed. Perfect for travelers and international business.",
+      "cta": {
+        "label": "Exchange Currency",
+        "action": "foreignExchange",
+        "payload": {}
+      },
+      "rules": {
+        "requireSegments": ["frequent-traveler", "international-business"]
+      }
+    },
+    {
+      "id": "estate-planning-consultation",
+      "name": "Estate Planning Consultation",
+      "copy": "Protect your family's future. Free will preparation and estate planning advice.",
+      "cta": {
+        "label": "Book Consultation",
+        "action": "bookAppointment",
+        "payload": {"serviceType": "estate"}
+      },
+      "rules": {
+        "minAge": 40,
+        "minBalance": 50000
+      }
     }
   ]
 }
